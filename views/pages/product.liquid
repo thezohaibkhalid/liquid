@@ -1,0 +1,5 @@
+{% layout "base" %}
+<h1>{{ product.title }}</h1>
+<p class="price">{{ product.price | money: 'PKR' }}</p>
+<p style="color:#777">{{ product.desc }}</p>
+<a href="/menu">← Back to Menu</a>

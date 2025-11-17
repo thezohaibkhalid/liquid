@@ -1,0 +1,7 @@
+<div class="card">
+  <div style="font-weight:600">{{ product.title }}</div>
+  <div class="price">{{ product.price | money: 'PKR' }}</div>
+  <div style="color:#777">{{ product.desc }}</div>
+  <a href="/product/{{ product.id }}">View</a>
+  <button style="float:right">{{ 'add_to_cart' | t: i18n }}</button>
+</div>

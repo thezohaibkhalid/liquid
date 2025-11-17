@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>{{ page_title | default: 'TASTIQO' }}</title>
+    <title>TASTIQO — Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <style>
       :root { --bg:#fafafa; --card:#fff; --ink:#111; --muted:#777; --line:#eee; --brand:#0f62fe; }
@@ -17,10 +17,16 @@
     </style>
   </head>
   <body>
-    {% render 'header' %}
+    <header class="wrap">
+  <nav>
+    <a href="/">TASTIQO</a>
+    <a href="/menu">Menu</a>
+  </nav>
+</header>
+
     <main class="wrap">
-      {{ content }}
+      
     </main>
-    <footer class="wrap">© {{ "now" | date: "%Y" }} TASTIQO</footer>
+    <footer class="wrap">© 2025 TASTIQO</footer>
   </body>
 </html>

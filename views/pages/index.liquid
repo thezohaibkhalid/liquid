@@ -1,0 +1,8 @@
+{% layout "base" %}
+<h1>Welcome</h1>
+<p>Popular items</p>
+<div class="grid">
+  {% for p in menu %}
+    {% render 'product-card', product: p, i18n: i18n %}
+  {% endfor %}
+</div>

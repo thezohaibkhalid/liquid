@@ -1,0 +1,9 @@
+{% layout "base" %}
+<h1>{{ page_title }}</h1>
+<div class="grid">
+  {% for item in items %}
+    {% render 'product-card', product: item, i18n: i18n %}
+  {% else %}
+    <p>No items found.</p>
+  {% endfor %}
+</div>
