@@ -1,0 +1,6 @@
+<section class="card">
+  <h1>{{ section.settings.title }}</h1>
+  <p class="price">{{ section.settings.price | money: theme.i18n.currency }}</p>
+  <p style="color:#777">{{ section.settings.desc }}</p>
+  <a href="{{ section.settings.cta_href }}" class="btn">{{ section.settings.cta_label }}</a>
+</section>

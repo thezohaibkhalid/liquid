@@ -1,6 +1,7 @@
 <header class="wrap">
   <nav>
-    <a href="/">TASTIQO</a>
-    <a href="/menu">Menu</a>
+    {% for l in header.links %}
+      <a href="{{ l.href }}">{{ l.label }}</a>
+    {% endfor %}
   </nav>
 </header>

@@ -1,0 +1,14 @@
+<section>
+  {% if section.settings.title %}<h2>{{ section.settings.title }}</h2>{% endif %}
+  <div style="display:grid;gap:12px;grid-template-columns:repeat({{ section.settings.columns | default: 3 }}, 1fr)">
+    {% for b in section.blocks %}
+      <div class="card">
+        <div style="font-weight:600">{{ b.title }}</div>
+        <div class="price">{{ b.price | money: theme.i18n.currency }}</div>
+        <div style="color:#777">{{ b.desc }}</div>
+        <a href="/product/{{ b.slug }}">View</a>
+        <button style="float:right">{{ 'add_to_cart' | t: i18n }}</button>
+      </div>
+    {% endfor %}
+  </div>
+</section>

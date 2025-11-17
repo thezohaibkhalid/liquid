@@ -1,0 +1,119 @@
+{
+    "theme": {
+      "name": "TASTIQO Default",
+      "version": "1.0.0",
+      "palette": {
+        "bg": "#fafafa",
+        "card": "#ffffff",
+        "ink": "#111111",
+        "muted": "#777777",
+        "line": "#eeeeee",
+        "brand": "#0f62fe"
+      },
+      "typography": {
+        "fontFamily": "system-ui, -apple-system, Segoe UI, Roboto, sans-serif",
+        "baseSize": 16
+      },
+      "i18n": {
+        "locale": "en-PK",
+        "currency": "PKR"
+      }
+    },
+  
+    "dataSources": {
+      "menu": "inline",
+      "promotions": "inline"
+    },
+  
+    "globals": {
+      "header": {
+        "links": [
+          { "label": "TASTIQO", "href": "/" },
+          { "label": "Menu", "href": "/menu" }
+        ]
+      },
+      "footer": {
+        "text": "© {{ 'now' | date: '%Y' }} TASTIQO"
+      }
+    },
+  
+    "pages": [
+      {
+        "path": "index.html",
+        "layout": "base",
+        "title": "Welcome to TASTIQO",
+        "sections": [
+          {
+            "id": "hero-1",
+            "type": "hero",
+            "settings": {
+              "heading": "Fresh. Fast. TASTIQO.",
+              "subheading": "Order your favorites in seconds",
+              "cta_label": "Order Now",
+              "cta_href": "/menu",
+              "bg": "#ffffff"
+            }
+          },
+          {
+            "id": "banner-1",
+            "type": "banner",
+            "settings": {
+              "text": "Weekend Special — Buy 1 Get 1 Free on Burgers",
+              "bg": "#eef6ff"
+            }
+          },
+          {
+            "id": "grid-1",
+            "type": "product-grid",
+            "settings": {
+              "title": "Popular items",
+              "columns": 3
+            },
+            "blocks": [
+              { "title": "Zinger Burger", "price": 450, "desc": "Crispy chicken, mayo", "slug": "zinger" },
+              { "title": "Beef Cheese Burger", "price": 620, "desc": "Beef patty, cheddar", "slug": "beef-cheese" },
+              { "title": "Fries", "price": 180, "desc": "Crispy fries", "slug": "fries" }
+            ]
+          }
+        ]
+      },
+  
+      {
+        "path": "menu/index.html",
+        "layout": "base",
+        "title": "Menu",
+        "sections": [
+          {
+            "id": "menu-grid-1",
+            "type": "product-grid",
+            "settings": { "title": "All Items", "columns": 3 },
+            "blocks": [
+              { "title": "Zinger Burger", "price": 450, "desc": "Crispy chicken, mayo", "slug": "zinger" },
+              { "title": "Beef Cheese Burger", "price": 620, "desc": "Beef patty, cheddar", "slug": "beef-cheese" },
+              { "title": "Fries", "price": 180, "desc": "Crispy fries", "slug": "fries" }
+            ]
+          }
+        ]
+      },
+  
+      {
+        "path": "product/zinger/index.html",
+        "layout": "base",
+        "title": "Zinger Burger",
+        "sections": [
+          {
+            "id": "product-hero-zinger",
+            "type": "product-hero",
+            "settings": {
+              "title": "Zinger Burger",
+              "price": 450,
+              "desc": "Crispy chicken, mayo",
+              "cta_label": "Add to Cart",
+              "cta_href": "/cart"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  

@@ -1,20 +1,21 @@
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>{{ page_title | default: theme.name }}</title>
+    <title>Menu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <style>
       :root {
-        --bg: {{ theme.palette.bg }};
-        --card: {{ theme.palette.card }};
-        --ink: {{ theme.palette.ink }};
-        --muted: {{ theme.palette.muted }};
-        --line: {{ theme.palette.line }};
-        --brand: {{ theme.palette.brand }};
+        --bg: #fafafa;
+        --card: #ffffff;
+        --ink: #111111;
+        --muted: #777777;
+        --line: #eeeeee;
+        --brand: #0f62fe;
       }
       *{box-sizing:border-box}
-      body{font-family:{{ theme.typography.fontFamily }};font-size:{{ theme.typography.baseSize }}px;margin:0;background:var(--bg);color:var(--ink)}
+      body{font-family:system-ui, -apple-system, Segoe UI, Roboto, sans-serif;font-size:16px;margin:0;background:var(--bg);color:var(--ink)}
       header,footer{padding:14px 18px;background:#fff;border-bottom:1px solid var(--line)}
       .wrap{max-width:980px;margin:0 auto;padding:18px}
       .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}
@@ -25,10 +26,15 @@
     </style>
   </head>
   <body>
-    {% render 'header' %}
+    <header class="wrap">
+  <nav>
+    
+  </nav>
+</header>
+
     <main class="wrap stack">
-      {{ content }}
+      
     </main>
-    <footer class="wrap">{{ footer.text }}</footer>
+    <footer class="wrap">© {{ 'now' | date: '%Y' }} TASTIQO</footer>
   </body>
 </html>
