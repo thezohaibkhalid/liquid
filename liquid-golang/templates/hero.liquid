@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    
+    <style>
+    body {
+      margin:0;
+      font-family: system-ui, -apple-system;
+      background:#f8fafc;
+      color:#1e293b;
+    }
+    
+    /* Global */
+    .section {
+      max-width:1200px;
+      margin:80px auto;
+      padding:0 40px;
+    }
+    
+    h1,h2,h3 { margin:0 0 20px; }
+    
+    /* HERO */
+    .hero {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:80px 40px;
+      background:linear-gradient(135deg,#1e3a8a,#3b82f6);
+      color:white;
+    }
+    
+    .hero-text {
+      flex:1;
+      animation:fadeUp 1s ease forwards;
+      opacity:0;
+    }
+    
+    .hero-text h1 {
+      font-size:48px;
+    }
+    
+    .hero-img img {
+      max-width:500px;
+      border-radius:20px;
+      box-shadow:0 20px 60px rgba(0,0,0,0.3);
+    }
+    
+    /* STATS */
+    .stats {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:30px;
+    }
+    
+    .stat-box {
+      background:white;
+      padding:30px;
+      border-radius:12px;
+      text-align:center;
+      box-shadow:0 10px 30px rgba(0,0,0,0.05);
+    }
+    
+    /* FEATURES */
+    .feature-category {
+      margin-bottom:60px;
+    }
+    
+    .feature-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    }
+    
+    .feature-card {
+      background:white;
+      padding:25px;
+      border-radius:12px;
+      transition:0.3s;
+      opacity:0;
+      transform:translateY(20px);
+      animation:fadeUp 0.6s ease forwards;
+    }
+    
+    .feature-card.active {
+      border-left:5px solid #22c55e;
+    }
+    
+    /* TESTIMONIALS */
+    .testimonials {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+    }
+    
+    .testimonial-card {
+      background:white;
+      padding:30px;
+      border-radius:15px;
+      box-shadow:0 10px 40px rgba(0,0,0,0.08);
+    }
+    
+    .testimonial-card img {
+      width:60px;
+      height:60px;
+      border-radius:50%;
+    }
+    
+    /* PRICING */
+    .pricing {
+      display:flex;
+      gap:30px;
+      flex-wrap:wrap;
+    }
+    
+    .price-card {
+      flex:1;
+      min-width:250px;
+      background:white;
+      padding:40px;
+      border-radius:15px;
+      text-align:center;
+      box-shadow:0 10px 40px rgba(0,0,0,0.08);
+    }
+    
+    .price-card.recommended {
+      border:3px solid #3b82f6;
+    }
+    
+    /* FAQ */
+    .faq-item {
+      background:white;
+      padding:20px;
+      border-radius:10px;
+      margin-bottom:15px;
+    }
+    
+    /* Animations */
+    @keyframes fadeUp {
+      to { opacity:1; transform:translateY(0); }
+    }
+    </style>
+    </head>
+    
+    <body>
+    
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1>{{ heading }}</h1>
+        <p>{{ description }}</p>
+    
+        {% if user %}
+          <p>
+            Welcome back <strong>{{ user.name }}</strong>
+            {% if user.isPremium %}
+              🌟 Premium Member
+            {% endif %}
+          </p>
+        {% endif %}
+      </div>
+    
+      <div class="hero-img">
+        <img src="{{ image_url }}?auto=format&fit=crop&w=800&q=80">
+      </div>
+    </section>
+    
+    <!-- STATS -->
+    <section class="section">
+      <div class="stats">
+        {% for stat in stats %}
+          <div class="stat-box"
+               style="animation-delay: {{ forloop.index0 | times: 0.2 }}s">
+            <h2>{{ stat.value }}</h2>
+            <p>{{ stat.label }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+    
+    <!-- FEATURES -->
+    <section class="section">
+      <h2>Platform Capabilities</h2>
+    
+      {% for group in features %}
+        <div class="feature-category">
+          <h3>{{ group.category }}</h3>
+    
+          <div class="feature-grid">
+            {% for feature in group.items %}
+              <div class="feature-card {% if feature.active %}active{% endif %}"
+                   style="animation-delay: {{ forloop.index0 | times: 0.15 }}s">
+    
+                <h4>{{ feature.title }}</h4>
+                <p>{{ feature.description }}</p>
+                <small>#{{ forloop.index }}</small>
+    
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </section>
+    
+    <!-- TESTIMONIALS -->
+    <section class="section">
+      <h2>What Our Clients Say</h2>
+    
+      <div class="testimonials">
+        {% for t in testimonials %}
+          <div class="testimonial-card">
+            <img src="{{ t.image }}?auto=format&fit=crop&w=200&q=80">
+            <h4>{{ t.name }}</h4>
+            <small>{{ t.title }}</small>
+            <p>"{{ t.quote }}"</p>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+    
+    <!-- PRICING -->
+    <section class="section">
+      <h2>Pricing Plans</h2>
+    
+      <div class="pricing">
+        {% for plan in pricing %}
+          <div class="price-card {% if plan.recommended %}recommended{% endif %}">
+            <h3>{{ plan.name }}</h3>
+            <h1>{{ plan.price }}</h1>
+            <p>{{ plan.description }}</p>
+    
+            {% if plan.recommended %}
+              <strong>Most Popular</strong>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+    
+    <!-- FAQ -->
+    <section class="section">
+      <h2>Frequently Asked Questions</h2>
+    
+      {% for faq in faqs %}
+        <div class="faq-item">
+          <h4>{{ faq.question }}</h4>
+          <p>{{ faq.answer }}</p>
+        </div>
+      {% endfor %}
+    </section>
+    
+    <!-- FOOTER -->
+    <section class="section" style="text-align:center; padding:80px 0;">
+      <h2>Ready to scale?</h2>
+      <p>Build dynamic Liquid templates powered by Go.</p>
+    </section>
+    
+    </body>
+    </html>
+    

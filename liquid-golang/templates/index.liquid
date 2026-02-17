@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap');
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-900">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-bold text-amber-800 tracking-tighter">{{ site_name }}</span>
+                </div>
+                <div class="hidden md:flex space-x-10 text-sm font-semibold uppercase tracking-widest">
+                    <a href="/" class="hover:text-amber-700 transition">Home</a>
+                    <a href="/menu" class="hover:text-amber-700 transition">Menu</a>
+                    <a href="/checkout" class="hover:text-amber-700 transition">Cart</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/menu" class="bg-amber-800 text-white px-6 py-2 rounded-full text-sm font-bold hover:bg-amber-900 transition">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <img src="{{ hero.image }}" alt="Hero" class="absolute w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative text-center text-white px-4 animate__animated animate__fadeInUp">
+            <h1 class="text-5xl md:text-7xl mb-6">{{ hero.title }}</h1>
+            <p class="text-xl md:text-2xl mb-10 text-stone-200 max-w-2xl mx-auto">{{ hero.subtitle }}</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="/menu" class="bg-amber-600 hover:bg-amber-700 text-white px-10 py-4 rounded-full text-lg font-bold transition">Explore Menu</a>
+                <a href="#about" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-10 py-4 rounded-full text-lg font-bold transition">Our Story</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Featured Categories -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl mb-4">Savor the Flavor</h2>
+                <p class="text-stone-500 max-w-xl mx-auto">Discover our carefully curated selections of the season's finest offerings.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {% for cat in featured_categories %}
+                <div class="group relative h-96 overflow-hidden rounded-2xl shadow-xl cursor-pointer">
+                    <img src="{{ cat.image }}" alt="{{ cat.name }}" class="absolute w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-8 left-8 text-white">
+                        <h3 class="text-2xl mb-2">{{ cat.name }}</h3>
+                        <span class="text-sm font-semibold uppercase tracking-widest text-amber-400 group-hover:underline">View Selection &rarr;</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-400 py-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-white text-3xl mb-8">{{ site_name }}</h2>
+            <div class="flex justify-center space-x-8 mb-12">
+                <a href="/" class="hover:text-white transition">Home</a>
+                <a href="/menu" class="hover:text-white transition">Menu</a>
+                <a href="/checkout" class="hover:text-white transition">Reservations</a>
+            </div>
+            <p class="text-sm">&copy; {{ current_year }} {{ site_name }}. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
